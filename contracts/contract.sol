@@ -1,11 +1,38 @@
-pragma solidity >=0.4.25 <8.0.0;
+pragma solidity  ^0.8.0;
 
-contract RefrigeratedTransportation
+contract GeoLogix
 {
     //Set of States
     enum StateType { Created, Completed, OutOfCompliance}
     enum SensorType { None, deivceLongitude, Latitude, deviceTimestamp}
 
+    event Transfer(address ownerI;d, uint amount, uint balance)
+    
+    address payable public owner;
+    address payable public driver;
+
+    constructor() payable {owner = payable(msg.sender);
+    }
+    
+    struct Conditions {
+
+        string driverName;
+        string longitude;
+        string latitude;
+        string expectedlatitude;
+        string expectedlongitude;
+        string differnece;
+        string timestamp;
+
+    }
+
+    struct Status {
+        string status;
+    }
+
+    address[] public driverIds;
+
+    function createDriver( address _address, string memory _driverName, string memory _longitude, string memory _latitude,  memdriver)
     //List of properties
     StateType public  State;
     address public  Owner;
