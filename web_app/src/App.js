@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+import web3 from './interactors/web3';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css';
+import React, { useEffect, useState } from 'react';
+import contract from './interactors/payer';
+import List from './pages/List';
+import Details from './pages/Details';
+import Create from './pages/Create';
 
 function App() {
+
+  useEffect(() => {
+    const init = async () => {
+    };
+
+    init();
+
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code>  save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+     <BrowserRouter>
+      <Routes>
+
+        <Route path={"/"} exact element={<List />} />
+        <Route path={"/empList"} exact element={<List />} />
+        <Route path={"/empDetail/:id"} exact element={<Details />} />
+        <Route path={"/addEmp"} exact element={<Create />} />
+
+      </Routes>
+    </BrowserRouter>
   );
 }
 
