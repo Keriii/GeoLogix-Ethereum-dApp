@@ -1,14 +1,29 @@
 pragma solidity  ^0.8.0;
 
-contract GeoLogix
-{
-    //Set of States
-    enum StateType { Created, Completed, OutOfCompliance}
-    enum SensorType { None, deivceLongitude, Latitude, deviceTimestamp}
+import "@thirdweb-dev/contracts/extension/Ownable.sol";
 
-    event Transfer(address ownerI;d, uint amount, uint balance)
+
+contract Geoogix
+{
+    event Delivery(address indexed driverId, bool status);
     
     address payable public owner;
+
+    struct Driver{
+        address driverId;
+        string driverName;
+        string longitude;
+        string latitude;
+        // string expectedlatitude;
+        // string expectedlongitude;
+        // string differnece;
+        uint radius;
+        string timestamp;
+        bool status;
+    }
+    //Set of States
+
+    
     address payable public driver;
 
     constructor() payable {owner = payable(msg.sender);
@@ -32,20 +47,17 @@ contract GeoLogix
 
     address[] public driverIds;
 
-    function createDriver( address _address, string memory _driverName, string memory _longitude, string memory _latitude,  memdriver)
-    //List of properties
-    StateType public  State;
-    address public  Owner;
-    address public  Driver;
+    function createDriver( address _driverId, string memory _driverName, string memory _longitude, string memory _latitude,  uint radius, uint timestamp) exteranl onlyownerP
+    
+    
+    address public  OwnerId;
+    address public  DriverId;
     address public  Device;
     address public  Contracts;
     int public  Latitude;
     int public  Longtude;
     int public  Radius;
-    SensorType public  ComplianceSensorType;
-    int public  ComplianceSensorReading;
     bool public  ComplianceStatus;
-    string public  ComplianceDetail;
 
     constructor(address device, address owner, address contracts, address driver, int longitude, int latitude, int radius)
     {
@@ -99,39 +111,6 @@ contract GeoLogix
             State = StateType.OutOfCompliance;
         }
     }
-
-    // function TransferResponsibility(address newCounterparty) public
-    // {
-    //     // keep the state checking, message sender, and device checks separate
-    //     // to not get cloberred by the order of evaluation for logical OR
-    //     if ( State == StateType.Completed )
-    //     {
-    //         revert();
-    //     }
-
-    //     if ( State == StateType.OutOfCompliance )
-    //     {
-    //         revert();
-    //     }
-
-    //     if ( InitiatingCounterparty != msg.sender && Counterparty != msg.sender )
-    //     {
-    //         revert();
-    //     }
-
-    //     if ( newCounterparty == Device )
-    //     {
-    //         revert();
-    //     }
-
-    //     if (State == StateType.Created)
-    //     {
-    //         State = StateType.InTransit;
-    //     }
-
-    //     PreviousCounterparty = Counterparty;
-    //     Counterparty = newCounterparty;
-    // }
 
     function Complete() public
     {
