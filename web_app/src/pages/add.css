@@ -1,0 +1,36 @@
+.input-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+input{
+    max-width: 300px;
+}
+.employee-form{
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+    width: 300px;
+}
+.form-wrapper{
+    display:grid;
+    justify-content: center;
+    /* flex-direction: column; */
+    align-content: center;
+    height: 100vh;
+}
+.form-header{
+    position: fixed;
+    top:20%;
+    left : 40%;
+}
+.submit{
+    background-color: rgb(103, 136, 140);
+    padding-block: 5px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+.submit:hover{
+    transform: scaleY(1.05);
+}
